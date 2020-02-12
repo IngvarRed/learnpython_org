@@ -29,13 +29,12 @@ print(brics)
 Another way to create a DataFrame is by importing a csv file using Pandas. Now, the csv cars.csv is stored and can be imported using pd.read_csv:
 
 Unnamed: 0  cars_per_cap        country drives_right
-    0         US           809  United States         True
-    1        AUS           731      Australia        False
-    2        JAP           588          Japan        False
-    3         IN            18          India        False
-    4         RU           200         Russia         True
-    5        MOR            70        Morocco         True
-    6         EG            45          Egypt         True
+     area    capital       country  population
+0   8.516   Brasilia        Brazil      200.40
+1  17.100     Moscow        Russia      143.50
+2   3.286  New Dehli         India     1252.00
+3   9.597    Beijing         China     1357.00
+4   1.221   Pretoria  South Africa       52.98
 '''
 # Import pandas as pd
 import pandas as pd
@@ -45,3 +44,15 @@ cars = pd.read_csv('cars.csv') # file not presented
 
 # Print out cars
 print(cars)
+
+'''
+<script.py> output:
+      Unnamed: 0  cars_per_cap        country drives_right
+    0         US           809  United States         True
+    1        AUS           731      Australia        False
+    2        JAP           588          Japan        False
+    3         IN            18          India        False
+    4         RU           200         Russia         True
+    5        MOR            70        Morocco         True
+    6         EG            45          Egypt         True
+'''
