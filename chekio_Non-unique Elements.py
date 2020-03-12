@@ -1,16 +1,9 @@
 # Non-unique Elements
 ''' remove all unique elements (elements which are contained in a given list only once) '''
 
-#Your optional code here
-#You can import some modules or create additional functions
-
-
 def checkio(data: list) -> list:
-    #Your code here
-    #It's main function. Don't remove this function
-    #It's used for auto-testing and must return a result for check.
+    ''' remove all unique elements (elements which are contained in a given list only once) '''
 
-    #replace this for solution
     new_data = []
     for i in range(len(data)):
         if data.count(data[i]) > 1:
