@@ -2,19 +2,38 @@
 ''' Sort the given iterable so that its elements end up in the decreasing frequency order, that is, the number of times they appear in elements.
 If two elements have the same frequency, they should end up in the same order as the first appearance in the iterable. '''
 
+
 def frequency_sort(items):
     '''
     Sort the given iterable so that its elements end up in the decreasing frequency order, that is, the number of times they appear in elements.
     If two elements have the same frequency, they should end up in the same order as the first appearance in the iterable.
     '''
-    frqn_item = []
-    for j, item in enumerate(items):
-        frqn_item[j]=(item, items.count(item))
-    print(frqn_item)
 
-    return None
+    for i, item_i in enumerate(items):
+        for j, item_j in enumerate(items):
+            if items.count(item_j) <= items.count(item_i):
+                if items[i] != items[j]:
+                    (items[i], items[j]) = (items[j], items[i])
+
+    return items
 
 
+# !!!! That solution !!!
+def frequency_sort(items): # sortbyfreq(arr):
+    s = set(items)
+    keys = {n: (-items.count(n), items.index(n)) for n in s}
+    return sorted(items, key=lambda n: keys[n])
+
+# other solution
+def frequency_sort(items):
+    # group items ordering them by order of appearance
+    # this handle the case where 2 different items get same frequency
+    a = sorted(items,key=items.index)
+
+    # sor by frequency
+    a = sorted(a,key=items.count, reverse=True)
+
+    return a
 
 if __name__ == '__main__':
     print("Example:")
@@ -30,4 +49,3 @@ if __name__ == '__main__':
     print("Coding complete? Click 'Check' to earn cool rewards!")
     
     '''
-
