@@ -25,3 +25,4 @@ print(trimmed_text( "Proin eget tortor risus", 24))  # "Proin eget tortor risus"
 print(trimmed_text("Proin eget tortor risus.", 23))  # "Proin eget tortor..."
 print(trimmed_text("Proin eget tortor risus.", 6))  # "Pro..."
 
+ll = [1,[2,3],4]
