@@ -28,7 +28,7 @@ class Person:
 
 
 
-person1 = Person('bilinskyy', 'igor', '1971-12-26', 'ingvarr')
+person1 = Person('Bilinskyy', 'Igor', '1971-12-26', 'Ingvarr')
 
 print(person1.nickname, person1.surname, person1.first_name, person1.birth_date)
 print(person1.get_age())
