@@ -15,7 +15,14 @@ class Person:
         print(self)
         self.birth_date = birth_date
     def get_age(self):
-        return datetime.datetime.today().year - int(self.birth_date.split('-')[0])
+        today_d = datetime.datetime.today()
+        age_day = self.birth_date.split('-')
+        if today_d.month == int(age_day[1]) and today_d.day >= int(age_day[2]):
+            return today_d.year - int(age_day[0])
+        elif today_d.month > int(age_day[1]):
+            return today_d.year - int(age_day[0])
+        else:
+            return today_d.year - int(age_day[0]) - 1
     def get_fullname(self):
         return self.surname + ' ' + self.first_name
 
