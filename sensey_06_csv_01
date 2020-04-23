@@ -1,0 +1,53 @@
+# Student class, which stores the student’s practical work
+
+class Student:
+    '''class, which stores the student’s practical work'''
+    conf = {
+        "lab_max": 10,  # the maximum number of points for one practical task
+        "lab_num": 7  # number of practical tasks
+    }
+    def __init__(self, name, conf):
+        self.name = name
+        self.lab_max = conf['lab_max']
+        self.lab_num = conf['lab_num']
+        self.labs = [0] * self.lab_num
+
+    def set_lab(self, score, number=None):
+        '''saves points for practical work with the number'''
+        if number is None and 0 in self.labs:
+            number = self.labs.index(0)
+        if number is None or number >= self.lab_num:
+            return 'error'
+        self.labs[number] = score if score <= self.lab_max else self.lab_max
+
+    def average_score(self):
+        '''returns a number rounded to tenths, the average score for practical tasks'''
+        return round(sum(self.labs) / float(self.lab_num), 1)
+
+
+import csv
+
+
+def find_best_student(filename):
+    with open(filename, 'r') as fr:
+        reader_dict = csv.DictReader(fr)
+        best_student = None
+        for row_dict in reader_dict:
+            name = row_dict['name']
+            lab_max = int(row_dict['lab_max'])
+            lab_num = int(row_dict['lab_num'])
+            l1 = int(row_dict['l1'])
+            l2 = int(row_dict['l2'])
+            l3 = int(row_dict['l3'])
+            l4 = int(row_dict['l4'])
+
+            student = Student(name, {'lab_max': lab_max, 'lab_num': lab_num})
+            student.set_lab(l1)
+            student.set_lab(l2)
+            student.set_lab(l3)
+            student.set_lab(l4)
+            if best_student is None or best_student.average_score() < student.average_score():
+                best_student = student
+    return best_student.name
+
+print(find_best_student('student.csv'))
